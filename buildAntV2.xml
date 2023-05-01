@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     <property name="jar.dir"     value="${build.dir}/jar"/>
     <property name="lib.dir"     value="lib"/>
     
-    <property name="main-class"  value="com.Helloworld"/>
+    <property name="main-class" value="HelloWorld"/>
 
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="/*.jar"/>
