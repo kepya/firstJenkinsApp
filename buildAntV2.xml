@@ -19,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <fileset dir="${lib.dir}" includes="/*.jar"/>
     </path>
 
-   <target name="clean">
+    <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
@@ -55,6 +55,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
     <target name="junit" depends="jar">
         <mkdir dir="${report.dir}"/>
+        <taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
+          <classpath>
+            <pathelement location="${lib.dir}/junit.jar"/>
+            <path refid="classpath"/>
+            <path refid="application"/>
+          </classpath>
+        </taskdef>
         <junit printsummary="yes">
             <classpath>
                 <path refid="classpath"/>
