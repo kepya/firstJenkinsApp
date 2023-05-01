@@ -19,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <fileset dir="${lib.dir}" includes="/*.jar"/>
     </path>
 
-    <target name="clean">
+   <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
@@ -53,23 +53,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
     <property name="report.dir"  value="${build.dir}/junitreport"/>
 
+    <!-- Run jUnit -->
     <target name="junit" depends="jar">
         <mkdir dir="${report.dir}"/>
-        <taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
-          <classpath>
-            <pathelement location="${lib.dir}/junit.jar"/>
-            <path refid="classpath"/>
-            <path refid="application"/>
-          </classpath>
-        </taskdef>
-        <junit printsummary="yes">
+        <junit printsummary="yes" haltonfailure="no">
+
             <classpath>
                 <path refid="classpath"/>
                 <path refid="application"/>
             </classpath>
 
             <formatter type="xml"/>
-
+                            
+            <!-- Make sure these two libraries are included -->
+            <classpath location="lib/junit-4.11.jar" />
+            <classpath location="lib/hamcrest-core-1.3.jar" />
+            
             <batchtest fork="yes" todir="${report.dir}">
                 <fileset dir="${src.dir}" includes="**/*Test.java"/>
             </batchtest>
